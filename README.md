@@ -4,7 +4,7 @@ Lets make an awesome DrupalCamp Nordics!
 ## Get involved!
 You may open an issue anytime if you have questions or concerns related to this event.
 
-At the moment we need more representatives on priority order:
+At the moment we need more representatives in following priority order:
 
 * Denmark
 * Norway
