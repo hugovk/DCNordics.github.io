@@ -7,7 +7,7 @@ You may open an issue anytime if you have questions or concerns related to this 
 At the moment we need more representatives in following priority order:
 
 * Denmark
-* Island
+* Iceland
 * Sweden
 * Norway
 
