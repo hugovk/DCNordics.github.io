@@ -42,6 +42,8 @@ body {
 .hero-component--title svg {
 	padding: 5%;
 	max-width: 60rem;
+	max-width: 100%;
+	box-sizing: border-box;
 }
 .hero-component--title path,
 .hero-component--title rect {
