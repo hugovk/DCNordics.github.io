@@ -5,6 +5,7 @@ html {
 }
 
 body {
+	background: rgba(80,180,204,1);
 	color: #7D7E80;
 	font-family: Josefin Sans, Avenir, sans-serif;
 	font-weight: 300;
