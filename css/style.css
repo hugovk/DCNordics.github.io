@@ -6,7 +6,7 @@ html {
 
 body {
 	background: rgba(80,180,204,1);
-	color: #7D7E80;
+	color: #fff;
 	font-family: Josefin Sans, Avenir, sans-serif;
 	font-weight: 300;
 	margin: 0;
@@ -31,6 +31,54 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6e5ef', endColorstr='#50b4cc', GradientType=0 );
 }
 
+.hero-component--vertical-spacing-large {
+	padding: 200px 0;
+}
+.hero-component--vertical-spacing-medium {
+	padding: 100px 0;
+}
+.hero-component--vertical-spacing-small {
+	padding: 50px 0;
+}
+
+.hero-component--img-maria {
+  position: relative;
+  z-index: 1;
+}
+.hero-component--img-maria:before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;  
+  opacity: .7; 
+  z-index: -1;
+	background-image: url('../resources/jpg/Marian_sairaala_Helsinki.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.hero-component--img-helsinki {
+  position: relative;
+  z-index: 1;
+}
+.hero-component--img-helsinki:before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;  
+  opacity: .7; 
+  z-index: -1;
+	background-image: url('../resources/jpg/1280px-Helsinki_July_2013-27a.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
 .hero svg {
 	display: block;
 	margin: 0 auto;
@@ -48,6 +96,14 @@ body {
 .hero-component--title path,
 .hero-component--title rect {
 	fill: #fff;
+}
+.hero-component--title h1,
+.hero-component--title h2 {
+	color: #fff;
+	text-align: center;
+}
+.hero-component--title h2 {
+	font-size: 2.5em;
 }
 
 .hero-component--content {
