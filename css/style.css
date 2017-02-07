@@ -41,6 +41,22 @@ body {
 	padding: 50px 0;
 }
 
+.hero-component--img-copyright-text {
+  text-align: right;
+  color: #efefef;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+.hero-component--img-copyright-text small {
+  font-size: 0.6em;
+}
+.hero-component--img-copyright-text a,
+.hero-component--img-copyright-text a:visited,
+.hero-component--img-copyright-text a:active {
+  color: #efefef;
+}
+
 .hero-component--img-maria {
   position: relative;
   z-index: 1;
