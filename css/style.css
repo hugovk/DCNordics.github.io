@@ -99,6 +99,20 @@ body {
 	background-size: cover;
 }
 
+.sponsors .sponsors--diamond img {
+  width: 80%;
+}
+
+.sponsors .sponsors--gold img {
+  width: 30%;
+  margin: 50px 0;
+}
+
+.sponsors .sponsors--silver img {
+  width: 20%;
+  margin: 50px 0;
+}
+
 .hero svg {
 	display: block;
 	margin: 0 auto;
@@ -138,9 +152,12 @@ body {
 	.hero-component--title svg {
 		padding: 10%;
 	}
-	.hero-component--content {
-		width: 80%;
-	}
+  .hero-component--content {
+    width: 80%;
+  }
+  .hero-component--content.sponsors {
+    width: 100%;
+  }
 }
 
 p {
