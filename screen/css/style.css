@@ -462,6 +462,7 @@ body {
   overflow: hidden;
   background: #82cad6;
   line-height: 1.4em;
+  word-break: break-word;
 }
 
 /* line 23, ../sass/style.scss */
