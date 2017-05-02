@@ -16,9 +16,6 @@ td {
     border-right: solid 1px #fff;
     border-bottom: solid 1px 
 }
-td:last-child {
-    border-right: none;
-}
 
 .visual-hidden {
 	position: absolute; 
