@@ -12,6 +12,10 @@ body {
 	margin: 0;
 }
 
+td { 
+  border: solid 1px #ccc; 
+}
+
 .visual-hidden {
 	position: absolute; 
   overflow: hidden; 
