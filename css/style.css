@@ -12,8 +12,9 @@ body {
 	margin: 0;
 }
 
-td { 
-  border: solid 1px #fff; 
+td {
+    border-right: solid 1px #fff;
+    border-bottom: solid 1px 
 }
 
 .visual-hidden {
