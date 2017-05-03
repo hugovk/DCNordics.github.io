@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hashtag Wall</title>
+	<link rel="stylesheet" href="https://d1azc1qln24ryf.cloudfront.net/114779/Socicon/style-cf.css?aovs">
+	<link rel="stylesheet" href="css/style.css">
+	<script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="node_modules/handlebars/dist/handlebars.min.js"></script>
+	<script type="text/javascript" src="node_modules/isotope-layout/dist/isotope.pkgd.min.js"></script>
+	<script type="text/javascript" src="node_modules/imagesloaded/imagesloaded.pkgd.min.js"></script>
+	<script type="text/javascript" src="node_modules/underscore/underscore-min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/smoothie/1.27.0/smoothie.min.js"></script>
+</head>
+<body>
+
+	<div id="header">#DCNORDICS</div>
+
+	<div id="card-container"></div>
+
+	<script type="text/javascript">
+
+		var socialFeedDomain = "http://172.104.143.102:6969";
+
+		var cardTemplate = "<div class='ui card' data-time='{{time}}'> "+
+			"{{#if image }}"+
+			"<div class='image'>"+
+				"<img src='{{image}}'>"+
+			"</div>"+
+			"{{/if}}"+
+			"<div class='content'>"+
+				"<div class='meta'>"+
+					"<span class='date'>{{formatDate time}}</span>"+
+				"</div>"+
+				"<div class='description'>"+
+					"{{parseHashtags caption type}}"+
+				"</div>"+
+				"<div class='extra'>"+
+					"<img src='{{userpic}}' class='ui avatar image'>"+
+					"{{linkUsername username type}}"+
+				"</div>"+
+				"<div class='socicon-{{type}} type'></div>"+
+			"</div>"+
+		"</div>";
+
+		cardTemplate = Handlebars.compile(cardTemplate);
+
+		Handlebars.registerHelper("formatTypeColor", function(type) {
+
+			switch(type) {
+				case 'instagram':
+					return 'red';
+				break;
+				case 'twitter':
+					return 'blue';
+				break;
+			}
+
+		});
+
+		Handlebars.registerHelper("formatDate", function(date) {
+
+			var itemDate = new Date(date*1000);
+
+			var string = itemDate.getDate()+"."+(itemDate.getMonth()+1)+"."+itemDate.getFullYear()+" ";
+
+			if(itemDate.getHours()<10) string = string+"0"+itemDate.getHours(); else string = string+itemDate.getHours();
+
+			string = string+":";
+
+			if(itemDate.getMinutes()<10) string = string+"0"+itemDate.getMinutes(); else string = string+itemDate.getMinutes();
+
+			return string;
+
+		});
+
+		Handlebars.registerHelper("parseHashtags", function(caption, type) {
+
+			caption = caption.replace(/\S*#(\[[^\]]+\]|\S+)/ig, '<a href=\'#\'>#$1</a>');
+
+            return new Handlebars.SafeString(caption);
+
+		});
+
+		Handlebars.registerHelper("linkUsername", function(username, type) {
+
+			switch(type) {
+
+				case 'instagram': 
+					return new Handlebars.SafeString("<a href='http://instagram.com/"+username+"' target='_blank'>"+username+"</a>");
+				break;
+
+				case 'twitter': 
+					return new Handlebars.SafeString("<a href='http://twitter.com/"+username+"' target='_blank'>"+username+"</a>");
+				break;
+
+			}
+
+		});
+
+		$(document).ready(function() {
+
+			$.getJSON(socialFeedDomain+"/posts", function(posts) {
+
+				posts.forEach(function(item) {
+
+					var itemDate = new Date(item.time);
+
+					$("#card-container").append(cardTemplate(item));
+
+				});
+
+				$("#card-container").imagesLoaded(function() {
+					$("#card-container").isotope({
+						itemSelector: ".card",
+						transitionDuration: 0,
+						masonry: {
+							columnWidth: 350,
+							gutter: 27,
+						}
+					});
+				});
+
+			});
+
+			setInterval(updateInstagram, 5*1000);
+
+
+		});
+
+		function updateInstagram() {
+
+			$.getJSON(socialFeedDomain+"/posts/"+$("#card-container .card:first-of-type").data('time'), function(posts) {
+
+				if(posts.length>0) {
+
+					var elements = [];
+
+					posts.forEach(function(post) {
+
+						var elem = $(cardTemplate(post)).get(0);
+
+						elements.push(elem);
+
+					});
+
+					$("#card-container").prepend(elements);
+
+					$("#card-container").imagesLoaded(function() {
+						$("#card-container").isotope("prepended",elements);
+					});
+
+				}
+
+			});
+
+		}
+
+	</script>
+
+</body>
+</html>
