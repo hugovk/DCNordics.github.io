@@ -124,6 +124,7 @@ td {
 .sponsors .sponsors--bronze img {
   width: 20%;
   margin: 50px 0;
+  max-height: 60px;
 }
 
 .hero svg {
